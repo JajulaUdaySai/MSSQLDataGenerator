@@ -7,7 +7,7 @@ namespace MSSQLDataGenerator.Models
 {
     [Index(nameof(Employee.Email), IsUnique = true)]
     [Index(nameof(Employee.Phone_number), IsUnique = true)]
-    [BulkDataLoaderXRowsOfData(1000000)]
+    [BulkDataLoaderXRowsOfData(25000)]
     public class Employee
     {
         [Key]

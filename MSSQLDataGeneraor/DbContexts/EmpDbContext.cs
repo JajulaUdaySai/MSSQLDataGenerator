@@ -13,7 +13,7 @@ namespace MSSQLDataGenerator.DbContexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"data source=.; initial catalog=EmployeeTestDB;Integrated Security=True;TrustServerCertificate=True;user id=sa");
+            optionsBuilder.UseSqlServer(@"data source=.; initial catalog=EmployeeTestDB2;Integrated Security=True;TrustServerCertificate=True;user id=sa");
         }
     }
 }

@@ -3,11 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Reflection;
 using System.Text;
+using System.Diagnostics;
 
 namespace MSSQLDataGenerator.BDLoader
 {
     public class BDL
     {
+        readonly Stopwatch timer = new Stopwatch();
+
         public void LoadDataInTables(DbContext context)
         {
             var dbType = context.GetType();
@@ -44,9 +47,16 @@ namespace MSSQLDataGenerator.BDLoader
                         var dbType = context.GetType();
                         var newDbContext = (DbContext)Activator.CreateInstance(dbType);
 
+                        Console.WriteLine("\nstarted Inserting in to Table :" + entityTypeName);
+
+                        timer.Start();
 
                         newDbContext.AddRange(List);
                         newDbContext.SaveChanges();
+
+                        Console.WriteLine("Completed Inserting in to Table :" + entityTypeName +" time elapsed : " + timer.Elapsed.ToString()+"\n");
+
+                        timer.Stop();
                     }
                 }
             }
@@ -80,8 +90,16 @@ namespace MSSQLDataGenerator.BDLoader
                         var dbType = context.GetType();
                         var newDbContext = (DbContext)Activator.CreateInstance(dbType);
 
+                        Console.WriteLine("\nstarted Inserting in to Table :" + entityTypeName);
+
+                        timer.Start();
+
                         newDbContext.AddRange(List);
                         newDbContext.SaveChanges();
+
+                        Console.WriteLine("Completed Inserting in to Table :" + entityTypeName + " time elapsed : " + timer.Elapsed.ToString() + "\n");
+
+                        timer.Stop();
                     }
                 }
             }
@@ -115,8 +133,16 @@ namespace MSSQLDataGenerator.BDLoader
                         var newDbContext = (DbContext)Activator.CreateInstance(dbType);
 
 
+                        Console.WriteLine("\nstarted Inserting in to Table :" + entityTypeName);
+
+                        timer.Start();
+
                         newDbContext.AddRange(List);
                         newDbContext.SaveChanges();
+
+                        Console.WriteLine("Completed Inserting in to Table :" + entityTypeName + " time elapsed : " + timer.Elapsed.ToString()+"\n");
+
+                        timer.Stop();
                     }
                 }
             }
